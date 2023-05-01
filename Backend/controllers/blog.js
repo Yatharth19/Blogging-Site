@@ -63,7 +63,7 @@ const getAllBlogs = async (req, res) => {
     try{
         const email = req.query.email;
         if(!email) {
-            res.status(404).json('Not found');
+            res.status(404).json('Email Not found');
         }
         const blogs = await Blog.find({ email: email });
         res.status(200).json(blogs);

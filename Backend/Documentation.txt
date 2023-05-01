@@ -1,0 +1,42 @@
+Clone into the repository
+cd backend
+npm install
+Create an env file in the root directory and initialize the following variables:
+
+PORT = Preferred Port number
+MONGO_URI = Your Mongo URI
+JWT_SECRET_KEY = Your JWT key secret
+REFRESH_SECRET_KEY = Your refresh key secret
+Start the server using npm start
+
+Open Postman
+1. Create a User
+A POST request at http://localhost:PORT/register with body contents having the name, email and password of the user.
+
+2. Login User
+After registering, login the user using a POST request at http://localhost:PORT/login. In the body of the request, it is required to enter the email and the password.
+
+Keep note of the accessToken and the refreshToken obtained.
+
+3. Create a Blog
+A POST request at http://localhost:PORT/create with the body contents having the title, content and email will create a blog.
+
+4. View all Blogs
+A GET request at http://localhost:PORT/blogs?email=(email) will get all the blogs present for the current user.
+
+5. View a specific Blog
+A GET request at http://localhost:PORT/blog/:id will get the blog with the specified id.
+
+6. Edit a Blog
+To edit a blog, a PUT request at http://localhost:PORT/blog/:id with the body contents as the new content could be made.
+
+7. Delete a Blog
+To delete a blog, a DELETE request at http://localhost:PORT/delete/:id, could be made, where the blog with the specified id will be deleted. 
+
+8. Create a new token
+The access token is set to expire in 2 hours, to create a new token, a POST request to http://localhost:PORT/token with the refresh token in the body can be called.
+
+To deploy the app, simply upload it on github and then connect any cloud hosting service like render to github. 
+Then select the option to create a new web service, and choose the repository.
+The run command should be npm start
+Enter the environment variables separately in the service.
