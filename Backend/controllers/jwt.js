@@ -3,22 +3,20 @@ require('dotenv').config();
 const Token = require('../models/token')
 
 const authenticateToken = (req, res, next) => {
-    // console.log(req.headers);
     const authHeader = req.headers['authorization'];
     const tokenPresent = authHeader && authHeader.split(' ')[1];
-    // console.log(authHeader);
+
     if(tokenPresent == null){
         return res.status(401).json({ message: "Missing Token"});
     }
     const token = authHeader.split(' ')[1];
 
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
-        // console.log(token);
+
         if (err) {
             return res.status(403).json({ msg: 'invalid token' })
         }
 
-        // req.user = user;
         next();
     })
 }

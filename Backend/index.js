@@ -14,9 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }));    //for receiving through 
 app.use(bodyParser.json()); //for postman
 app.use('/', routes);
 
-app.get('/', (req, res) => {
-    res.send('<h1>HI</h1>');
-})
 
 const PORT = process.env.PORT || 5000;
 

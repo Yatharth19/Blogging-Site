@@ -22,11 +22,7 @@ const getRegister = (req, res, next) => {
 
 const registerUser = async (req, res) => {
     try {
-        // const salt = await bcrypt.genSalt();
-        // const hashedPassword = await bcrypt.hash(request.body.password, salt);
-        
         const {name, email, password} = req.body;
-        // console.log(name);
         const oldUser = await User.findOne({email: email});
 
         if(oldUser){

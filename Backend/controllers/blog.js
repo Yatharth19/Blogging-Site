@@ -34,15 +34,13 @@ const updateBlog = async (req, res) => {
         res.status(200).json("blog Updated");
 
     } catch(err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).json('Could not update blog.');
     }
 };
 
 const deleteBlog = async (req, res) => {
     try{
-        // const blog = await Blog.findById(req.params.id);
-        // await blog.delete();
         await Blog.deleteOne({_id: req.params.id});
         res.status(200).json("blog Deleted");
     } catch(err) {
